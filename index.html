@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Visual Programming for Verilog</title>
+        <script src="js/blockly_compressed.js"></script>
+        <script src="js/blocks_compressed.js"></script>
+        <script src="js/javascript_compressed.js"></script>
+        <script src="js/python_compressed.js"></script>
+        <script src="js/verilog_compressed.js"></script>
+        <script src="js/en.js"></script>
+        <script src="js/customBlocks.js"></script>
+        <script src="js/lists.js"></script>
+        <script src="js/logic.js"></script>
+        <script src="js/loops.js"></script>
+        <script src="js/math.js"></script>
+        <script src="js/procedures.js"></script>
+        <script src="js/text.js"></script>
+        <script src="js/variables.js"></script>
+        <script src="js/custom.js"></script>
+        <script src="generators/verilog.js"></script>
+        <script src="generators/verilog/custom.js"></script>
+        <script src="generators/verilog/logic.js"></script>
+        <script src="generators/verilog/loops.js"></script>
+        <script src="generators/verilog/variables.js"></script>
+        <script src="generators/verilog/variables_dynamic.js"></script>
+    </head>
+    <body>
+        <div>
+            <button onclick="showJSCode()">Show Javascript Code</button>
+            <button onclick="showPYCode()">Show Python Code</button>
+            <button onclick="ShowVerCode()">Show Verilog Code</button>
+        </div>
+        
+        <div id="blocklyDiv">
+            <xml id="toolbox" style="display: none">
+                <category name="Logic" colour="230">
+                    <block type="always_blk"></block>
+                    <block type="logic_gates"></block>
+                    <block type="logic_boolean"></block>
+                    <block type="controls_if"></block>
+                    <block type="controls_ifelse"></block>
+                    <block type="logic_compare"></block>
+                    <block type="logic_operation"></block>
+                    <block type="logic_negate"></block>
+                    <block type="logic_null"></block>
+                    <block type="controls_if_if"></block>
+                    <block type="controls_if_elseif"></block>
+                    <block type="controls_if_else"></block>
+                </category>
+                <category name="Dynamic Variables" colour="330" custom="VARIABLE">
+                </category>
+                <category name="Init variables" colour="260">
+                    <block type="input_block"></block>
+                    <block type="wire_block"></block>
+                    <block type="output_block"></block>
+                </category>
+                <category name="Values" colour="230">
+                    <block type="zero"></block>
+                    <block type="one"></block>
+                    <block type="high_impedence"></block>
+                    <block type="dont_care"></block>
+                    <block type="pos_edge_clk"></block>
+                    <block type="neg_edge_clk"></block>
+                    <block type="neg_edge_reset"></block>
+                    <block type="pos_edge_reset"></block>
+                </category>
+                <category name="Numbers" colour="280">
+                    <block type="math_number"></block>
+                    <block type="decimal_number"></block>
+                    <block type="binary_number"></block>
+                    <block type="hexa_number"></block>
+                    <block type="octa_number"></block>
+                </category>
+            </xml>
+        </div>
+        <script>
+            var workspace = Blockly.inject('blocklyDiv',
+                    {toolbox: document.getElementById('toolbox'),
+                    grid:
+                        {
+                        spacing: 20,
+                        length: 3,
+                        colour: '#aaa',
+                        snap: true},
+                        trashcan: true
+                    ,
+                    zoom: 
+                    {
+                        controls: true,
+                        wheel: true,
+                        startScale: 1.0,
+                        maxScale: 3,
+                        minScale: 0.3,
+                        scaleSpeed: 1.2},
+                        trashcan: true
+                });
+
+                function showJSCode(){
+                    Blockly.JavaScript.INFINITE_LOOP_TRAP=null;
+                    var code = Blockly.JavaScript.workspaceToCode(workspace)
+                    alert(code)
+                }
+
+                function showPYCode(){
+                    Blockly.Python.INFINITE_LOOP_TRAP=null;
+                    var code = Blockly.Python.workspaceToCode(workspace)
+                    alert(code)
+                }
+
+                function ShowVerCode(){
+                    Blockly.Verilog.INFINITE_LOOP_TRAP = null;
+                    var code = Blockly.Verilog.workspaceToCode(workspace)
+                    alert(code)
+                }
+        </script>                  
+    </body>
+</html>
