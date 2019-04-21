@@ -42,45 +42,6 @@ Blockly.Blocks['dont_care'] = {
   }
 };
 
-Blockly.Blocks['logic_gates'] = {
-  init: function() {
-    this.appendValueInput("args1")
-        .setCheck(["Boolean", "Number"]);
-    this.appendValueInput("args2")
-        .setCheck(["Boolean", "Number"])
-        .appendField(new Blockly.FieldDropdown([["AND","and"], ["OR","or"], ["XOR","xor"], ["NAND","nand"], ["NOR","nor"]]), "gate");
-    this.setInputsInline(true);
-    this.setOutput(true, ["Boolean", "Number"]);
-    this.setColour(290);
- this.setTooltip("ar");
- this.setHelpUrl("https://whatis.techtarget.com/definition/logic-gate-AND-OR-XOR-NOT-NAND-NOR-and-XNOR");
-  }
-};
-
-Blockly.Blocks['neg_edge_clk'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Falling edge of the clock");
-    this.setOutput(true, "custom");
-    this.setColour(0);
- this.setTooltip("https://stackoverflow.com/questions/46170535/verilog-falling-edge-detection");
- this.setHelpUrl("https://stackoverflow.com/questions/46170535/verilog-falling-edge-detection");
-  }
-};
-
-
-Blockly.Blocks['pos_edge_clk'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Rising edge of Clock");
-    this.setOutput(true, "custom");
-    this.setColour(160);
- this.setTooltip("https://www.chipverify.com/verilog/verilog-positive-edge-detector");
- this.setHelpUrl("https://www.chipverify.com/verilog/verilog-positive-edge-detector");
-  }
-};
-
-
 Blockly.Blocks['always_blk'] = {
   init: function() {
     this.appendValueInput("condition")
@@ -157,109 +118,167 @@ Blockly.Blocks['octa_number'] = {
   }
 };
 
-Blockly.Blocks['init_module'] = {
+Blockly.Blocks['end_module'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Code sequence to be attached below");
-    this.appendStatementInput("module")
-        .setCheck(null)
-        .appendField("Start by listing inputs and outputs");
-    this.setColour(180);
- this.setTooltip("Module Declaration");
- this.setHelpUrl("http://www.asicguru.com/verilog/tutorial/modules/59/");
+        .appendField("end");
+    this.setPreviousStatement(true, null);
+    this.setColour(345);
+ this.setTooltip("");
+ this.setHelpUrl("End");
   }
 };
 
+Blockly.Blocks['module_dec'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Create new module with name")
+        .appendField(new Blockly.FieldTextInput("default"), "module_name");
+    this.appendStatementInput("variables")
+        .setCheck(null)
+        .appendField("Plug in Variables control& I/O variables");
+    this.setNextStatement(true, null);
+    this.setColour(50);
+ this.setTooltip("Create new Verilog Module");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['pos_edge'] = {
+  init: function() {
+    this.appendValueInput("NAME")
+        .setCheck(null)
+        .appendField("Rising edge of");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(300);
+ this.setTooltip("Rising edge");
+ this.setHelpUrl("https://electronics.stackexchange.com/questions/326662/posedge-in-verilog");
+  }
+};
+
+Blockly.Blocks['neg_edge'] = {
+  init: function() {
+    this.appendValueInput("NAME")
+        .setCheck(null)
+        .appendField("Falling edge of");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour(100);
+ this.setTooltip("Rising edge");
+ this.setHelpUrl("https://electronics.stackexchange.com/questions/326662/posedge-in-verilog");
+  }
+};
 
 Blockly.Blocks['input_block'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Declare variable");
-    this.appendValueInput("var_name")
-        .setCheck("String");
-    this.appendDummyInput()
+        .appendField("Declare new variable")
+        .appendField(new Blockly.FieldTextInput("VarName"), "NAME")
         .appendField("as Input");
-    this.setInputsInline(true);
+    this.appendValueInput("size")
+        .setCheck("Number")
+        .appendField("This input consists of these number of bits");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(240);
- this.setTooltip("Initialize a new input with a name to be inserted");
+    this.setColour(165);
+ this.setTooltip("Create a new Input variable");
  this.setHelpUrl("http://www.asic-world.com/verilog/syntax3.html");
   }
 };
 
 Blockly.Blocks['output_block'] = {
   init: function() {
-    this.appendValueInput("output")
-        .setCheck("String")
-        .appendField("Declare variable ");
     this.appendDummyInput()
+        .appendField("Declare new variable")
+        .appendField(new Blockly.FieldTextInput("VarName"), "NAME")
         .appendField("as Output");
-    this.setInputsInline(true);
+    this.appendValueInput("size")
+        .setCheck("Number")
+        .appendField("This output consists of these number of bits");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
- this.setTooltip("Initialize an output with any name");
+    this.setColour(200);
+ this.setTooltip("Create a new Output variable");
  this.setHelpUrl("http://www.asic-world.com/verilog/syntax3.html");
   }
 };
-
-
 
 Blockly.Blocks['wire_block'] = {
   init: function() {
+    this.appendDummyInput()
+        .appendField("Declare new variable")
+        .appendField(new Blockly.FieldTextInput("VarName"), "NAME")
+        .appendField("as Wire");
+    this.appendValueInput("size")
+        .setCheck("Number")
+        .appendField("This wire could hold up to");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(250);
+ this.setTooltip("Create a new variable with wire type");
+ this.setHelpUrl("http://www.asic-world.com/verilog/syntax3.html");
+  }
+};
+
+Blockly.Blocks['and_block'] = {
+  init: function() {
+    this.appendValueInput("NAME1")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("AND");
+    this.appendValueInput("NAME2")
+        .setCheck(null);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(150);
+this.setTooltip("AND operator between two values");
+this.setHelpUrl("https://en.wikipedia.org/wiki/Logical_conjunction");
+  }
+};
+
+Blockly.Blocks['or_block'] = {
+  init: function() {
+    this.appendValueInput("NAME1")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("OR");
+    this.appendValueInput("NAME2")
+        .setCheck(null);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(120);
+this.setTooltip("OR operator between two values");
+this.setHelpUrl("https://en.wikipedia.org/wiki/Logical_conjunction");
+  }
+};
+
+Blockly.Blocks['not_block'] = {
+  init: function() {
+    this.appendValueInput("value")
+        .setCheck(null)
+        .appendField("Not");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("Negate the operand");
+ this.setHelpUrl("https://en.wikipedia.org/wiki/Negation");
+  }
+};
+
+Blockly.Blocks['assign_block'] = {
+  init: function() {
     this.appendValueInput("NAME")
         .setCheck(null)
-        .appendField("Declare variable");
-    this.appendDummyInput()
-        .appendField("as Wire");
-    this.setInputsInline(true);
+        .appendField("Assign")
+        .appendField(new Blockly.FieldVariable("default"), "var");
+    this.setInputsInline(false);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
- this.setTooltip("Initialize a new wire with any name.");
- this.setHelpUrl("http://www.asic-world.com/verilog/syntax3.html");
-  }
-};
-
-
-Blockly.Blocks['neg_edge_reset'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Falling edge of reset pin");
-    this.setOutput(true, null);
-    this.setColour(230);
- this.setTooltip("");
- this.setHelpUrl("https://electronics.stackexchange.com/questions/163018/asynchronous-reset-in-verilog");
-  }
-};
-
-
-Blockly.Blocks['pos_edge_reset'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Rising edge of reset");
-    this.setOutput(true, null);
-    this.setColour(230);
- this.setTooltip("");
- this.setHelpUrl("https://electronics.stackexchange.com/questions/163018/asynchronous-reset-in-verilog");
-  }
-};
-
-
-Blockly.Blocks['input_block'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Declare variable");
-    this.appendValueInput("var_name")
-        .setCheck("String");
-    this.appendDummyInput()
-        .appendField("as Input");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(240);
- this.setTooltip("Initialize a new input with a name to be inserted");
- this.setHelpUrl("http://www.asic-world.com/verilog/syntax3.html");
+    this.setColour(330);
+ this.setTooltip("Assign a variable a value");
+ this.setHelpUrl("https://stackoverflow.com/questions/28751979/difference-between-behavioral-and-dataflow-in-verilog");
   }
 };
