@@ -38,13 +38,13 @@ Blockly.Verilog['controls_if'] = function(block) {
             Blockly.Verilog.ORDER_NONE) || '0';
         branchCode = Blockly.Verilog.statementToCode(block, 'DO' + n);
         code += (n > 0 ? ' else ' : '') +
-            'if (' + conditionCode + ') ' + 'BEGIN\n +' + branchCode+ '\n' + ' \tEND \n';
+            'if (' + conditionCode + ') ' + '\n \tbegin\n' + branchCode+ '\n' + ' end \n';
         ++n;
     } while (block.getInput('IF' + n));
 
   if (block.getInput('ELSE')) {
     branchCode = Blockly.Verilog.statementToCode(block, 'ELSE');
-    code += ' else \n' + ' \tBEGIN ' + branchCode + '\n' + ' \tEND ';
+    code += ' else \n' + ' \tbegin\n ' + branchCode + '\n' + ' end ';
   }
   return code + '\n';
 };

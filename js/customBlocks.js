@@ -133,13 +133,14 @@ Blockly.Blocks['module_dec'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Create new module with name")
-        .appendField(new Blockly.FieldTextInput("default"), "module_name");
-    this.appendStatementInput("variables")
-        .setCheck(null)
-        .appendField("Plug in Variables control& I/O variables");
+        .appendField(new Blockly.FieldTextInput("ModuleName"), "modName");
+    this.appendDummyInput()
+        .appendField("Write variables you'll use in the program")
+        .appendField(new Blockly.FieldTextInput("varNames"), "varNames");
+    this.setInputsInline(false);
     this.setNextStatement(true, null);
-    this.setColour(50);
- this.setTooltip("Create new Verilog Module");
+    this.setColour(150);
+ this.setTooltip("");
  this.setHelpUrl("");
   }
 };

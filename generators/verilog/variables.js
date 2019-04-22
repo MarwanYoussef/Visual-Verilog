@@ -43,7 +43,7 @@ Blockly.Verilog['variables_get'] = function(block) {
         Blockly.Verilog.ORDER_NONE) || '0';
     var varName = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'),
         Blockly.Variables.NAME_TYPE);
-    return varName + ' <= ' + argument0 +';' + '\n';
+    return varName + ' = ' + argument0 +';' + '\n';
   };
 
   

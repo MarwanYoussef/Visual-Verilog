@@ -32,17 +32,19 @@ Blockly.Verilog['one'] = function(block) {
     var value_condition = Blockly.Verilog.valueToCode(block, 'condition', Blockly.Verilog.ORDER_ATOMIC);
     var statements_body = Blockly.Verilog.statementToCode(block, 'body');
     // TODO: Assemble Verilog into code variable.
-    var code = 'always @ (' + value_condition + ')' + 'Begin\n' + statements_body + '\n'+ 'End';
+    var code = 'always @ (' + value_condition + ')' + 'begin\n' + statements_body + '\n'+ 'end';
     return code;
   }
 
   Blockly.Verilog['decimal_number'] = function(block) {
     var value_name = Blockly.Verilog.valueToCode(block, 'NAME', Blockly.Verilog.ORDER_ATOMIC);
+    console.log(value_name)
     // TODO: Assemble Verilog into code variable.
     var length = value_name.length;
-    var value = parseFloat(value_name)
-    var binary = value.toString(2);
-    var code = length + 'b' + binary + '\n';
+    console.log(length)
+    var number = value_name.toString(2);
+    console.log(number)
+    var code = length + 'b' + number + '\n';
     return code;
   };
 
@@ -80,15 +82,15 @@ Blockly.Verilog['one'] = function(block) {
       Blockly.Verilog.ORDER_NEG;
     return [code, order];
   };
-
+  
   Blockly.Verilog['module_dec'] = function(block) {
-    var text_module_name = block.getFieldValue('module_name');
-    var statements_variables = Blockly.Verilog.statementToCode(block, 'variables');
+    var text_modname = block.getFieldValue('modName');
+    var text_varnames = block.getFieldValue('varNames');
     // TODO: Assemble Verilog into code variable.
-    var code = 'module ' + text_module_name + '( '+ statements_variables +' );\n';
+    var code = 'module ' + text_modname + ' ('+ text_varnames+ ')' + ';\n';
     return code;
   };
-
+  
   Blockly.Verilog['end_module'] = function(block) {
     // TODO: Assemble Verilog into code variable.
     var code = 'endmodule\n';
@@ -98,14 +100,14 @@ Blockly.Verilog['one'] = function(block) {
   Blockly.Verilog['pos_edge'] = function(block) {
     var value_name = Blockly.Verilog.valueToCode(block, 'NAME', Blockly.Verilog.ORDER_ATOMIC);
     // TODO: Assemble Verilog into code variable.
-    var code = 'posedge' + value_name;
+    var code = 'posedge ' + value_name;
     return [code, Blockly.Verilog.ORDER_NONE];
   };
 
   Blockly.Verilog['neg_edge'] = function(block) {
     var value_name = Blockly.Verilog.valueToCode(block, 'NAME', Blockly.Verilog.ORDER_ATOMIC);
     // TODO: Assemble Verilog into code variable.
-    var code = 'negedge' + value_name;
+    var code = 'negedge ' + value_name;
     return [code, Blockly.Verilog.ORDER_NONE];
   };
 
@@ -115,9 +117,9 @@ Blockly.Verilog['one'] = function(block) {
     // TODO: Assemble Verilog into code variable.
     var code;
     if(value_size == 0 || value_size == 1){
-      code = 'INPUT ' + text_name + ',';
+      code = 'INPUT ' + text_name + ';\n';
     }else{
-      code = 'INPUT ' + '['+ (parseInt(value_size)-1)+':'+'0] '+ text_name + ',';
+      code = 'INPUT ' + '['+ (parseInt(value_size)-1)+':'+'0] '+ text_name + ';\n';
     }
     return code;
   };
@@ -128,9 +130,9 @@ Blockly.Verilog['one'] = function(block) {
     // TODO: Assemble Verilog into code variable.
     var code;
     if(value_size == 0 || value_size == 1){
-      code = 'OUTPUT ' + text_name + ',';
+      code = 'OUTPUT ' + text_name + ';\n';
     }else{
-      code = 'OUTPUT ' + '['+ (parseInt(value_size)-1)+':'+'0] '+ text_name + ',';
+      code = 'OUTPUT ' + '['+ (parseInt(value_size)-1)+':'+'0] '+ text_name + ';\n';
     }
     return code;
   };
@@ -141,9 +143,9 @@ Blockly.Verilog['one'] = function(block) {
     // TODO: Assemble Verilog into code variable.
     var code;
     if(value_size == 0 || value_size == 1){
-      code = 'WIRE ' + text_name + ',';
+      code = 'WIRE ' + text_name + ';\n';
     }else{
-      code = 'WIRE ' + '['+ (parseInt(value_size)-1)+':'+'0] '+ text_name + ',';
+      code = 'WIRE ' + '['+ (parseInt(value_size)-1)+':'+'0] '+ text_name + ';\n';
     }
     return code;
   };
