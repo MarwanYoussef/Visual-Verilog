@@ -58,63 +58,45 @@ Blockly.Blocks['always_blk'] = {
   }
 };
 
-Blockly.Blocks['decimal_number'] = {
+Blockly.Blocks['decimal_binary'] = {
   init: function() {
-    this.appendDummyInput()
-        .appendField("Decimal value");
     this.appendValueInput("val")
-        .setCheck("Number");
-    this.setInputsInline(true);
+        .setCheck("Number")
+        .appendField("Decimal to binary of ");
+    this.setInputsInline(false);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(270);
- this.setTooltip("Enter a value in Decimal");
- this.setHelpUrl("https://verilogams.com/refman/basics/numbers.html");
+    this.setColour(160);
+    this.setTooltip('Enter a number is decimal to be converted to Binary');
+    this.setHelpUrl('http://www.example.com/');
   }
 };
 
-Blockly.Blocks['binary_number'] = {
+Blockly.Blocks['decimal_hexa'] = {
   init: function() {
-    this.appendDummyInput()
-        .appendField("Binary value");
-    this.appendValueInput("NAME")
-        .setCheck(null);
-    this.setInputsInline(true);
+    this.appendValueInput("val")
+        .setCheck("Number")
+        .appendField("Decimal to Hexadecimal of");
+    this.setInputsInline(false);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(270);
- this.setTooltip("Enter a value in Binary");
- this.setHelpUrl("https://verilogams.com/refman/basics/numbers.html");
+    this.setColour(160);
+    this.setTooltip('Enter a number is decimal to be converted to Hexadecimal');
+    this.setHelpUrl('http://www.example.com/');
   }
 };
 
-Blockly.Blocks['hexa_number'] = {
+Blockly.Blocks['decimal_octa'] = {
   init: function() {
-    this.appendDummyInput()
-        .appendField("Hexadecimal value");
-    this.appendValueInput("NAME")
-        .setCheck("Number");
-    this.setInputsInline(true);
+    this.appendValueInput("val")
+        .setCheck("Number")
+        .appendField("Decimal to Octal of");
+    this.setInputsInline(false);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
- this.setTooltip("Enter a value in Hexadecimal");
- this.setHelpUrl("https://verilogams.com/refman/basics/numbers.html");
-  }
-};
-
-Blockly.Blocks['octa_number'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Octal Value");
-    this.appendValueInput("NAME")
-        .setCheck("Number");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(230);
- this.setTooltip("Enter a value in Octal");
- this.setHelpUrl("https://verilogams.com/refman/basics/numbers.html");
+    this.setColour(160);
+    this.setTooltip('Enter a number is decimal to be converted to Octal');
+    this.setHelpUrl('http://www.example.com/');
   }
 };
 
@@ -224,48 +206,65 @@ Blockly.Blocks['wire_block'] = {
 
 Blockly.Blocks['and_block'] = {
   init: function() {
-    this.appendValueInput("NAME1")
-        .setCheck(null);
     this.appendDummyInput()
-        .appendField("AND");
-    this.appendValueInput("NAME2")
-        .setCheck(null);
-    this.setInputsInline(true);
+        .appendField("Gate name")
+        .appendField(new Blockly.FieldTextInput("gateName"), "gName");
+    this.appendDummyInput()
+        .appendField("Output name")
+        .appendField(new Blockly.FieldTextInput("outName"), "oName");
+    this.appendValueInput("arg1")
+        .setCheck(null)
+        .appendField("Attach first input");
+    this.appendDummyInput()
+        .appendField("And with");
+    this.appendValueInput("arg2")
+        .setCheck(null)
+        .appendField("Attach second input");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(150);
-this.setTooltip("AND operator between two values");
-this.setHelpUrl("https://en.wikipedia.org/wiki/Logical_conjunction");
+    this.setColour(290);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
   }
 };
 
 Blockly.Blocks['or_block'] = {
   init: function() {
-    this.appendValueInput("NAME1")
-        .setCheck(null);
     this.appendDummyInput()
-        .appendField("OR");
-    this.appendValueInput("NAME2")
-        .setCheck(null);
-    this.setInputsInline(true);
+        .appendField("Gate name")
+        .appendField(new Blockly.FieldTextInput("gateName"), "gName");
+    this.appendDummyInput()
+        .appendField("Output name")
+        .appendField(new Blockly.FieldTextInput("outName"), "oName");
+    this.appendValueInput("arg1")
+        .setCheck(null)
+        .appendField("Attach first input");
+    this.appendDummyInput()
+        .appendField("OR-ed with");
+    this.appendValueInput("arg2")
+        .setCheck(null)
+        .appendField("Attach second input");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(120);
-this.setTooltip("OR operator between two values");
-this.setHelpUrl("https://en.wikipedia.org/wiki/Logical_conjunction");
+    this.setColour(100);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
   }
 };
 
-Blockly.Blocks['not_block'] = {
+Blockly.Blocks['not_gate'] = {
   init: function() {
-    this.appendValueInput("value")
+    this.appendDummyInput()
+        .appendField("output")
+        .appendField(new Blockly.FieldTextInput("name"), "out");
+    this.appendValueInput("NAME")
         .setCheck(null)
-        .appendField("Not");
+        .appendField("negate");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
- this.setTooltip("Negate the operand");
- this.setHelpUrl("https://en.wikipedia.org/wiki/Negation");
+    this.setColour(20);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
   }
 };
 
