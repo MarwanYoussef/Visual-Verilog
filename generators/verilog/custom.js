@@ -159,6 +159,17 @@ Blockly.Verilog['one'] = function(block) {
     return code;
   };
 
+  Blockly.Verilog['xor_block'] = function(block) {
+    var text_gname = block.getFieldValue('gName');
+    var text_oname = block.getFieldValue('oName');
+    var value_arg1 = Blockly.Verilog.valueToCode(block, 'arg1', Blockly.Verilog.ORDER_ATOMIC);
+    var value_arg2 = Blockly.Verilog.valueToCode(block, 'arg2', Blockly.Verilog.ORDER_ATOMIC);
+    // TODO: Assemble Verilog into code variable.
+    var code = 'xor ' + text_gname + ' (' + text_oname + ', ' + value_arg1 + ', ' + value_arg2
+    + ' )' +';\n';
+    return code;
+  };
+
   Blockly.Verilog['not_gate'] = function(block) {
     var text_out = block.getFieldValue('out');
     var value_name = Blockly.Verilog.valueToCode(block, 'NAME', Blockly.Verilog.ORDER_ATOMIC);
@@ -173,6 +184,15 @@ Blockly.Verilog['one'] = function(block) {
     // TODO: Assemble Verilog into code variable.
     var code = 'assign ' + variable_var + ' = ' + value_name+ ';\n';
     return code;
+  };
+
+  Blockly.Verilog['concat'] = function(block) {
+    var value_arg1 = Blockly.Verilog.valueToCode(block, 'arg1', Blockly.Verilog.ORDER_ATOMIC);
+    var value_arg2 = Blockly.Verilog.valueToCode(block, 'arg2', Blockly.Verilog.ORDER_ATOMIC);
+    // TODO: Assemble Verilog into code variable.
+    var code = '{' + value_arg1 + ',' + value_arg2 + '}' + ';\n';
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Verilog.ORDER_NONE];
   };
 
   

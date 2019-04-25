@@ -4,7 +4,7 @@ Blockly.Blocks['one'] = {
         .appendField("1");
     this.setOutput(true, "Number");
     this.setColour(230);
- this.setTooltip("Input Value of One");
+ this.setTooltip('Value of 1');
  this.setHelpUrl("https://www.csee.umbc.edu/portal/help/VHDL/verilog/types.html");
   }
 };
@@ -15,7 +15,7 @@ Blockly.Blocks['zero'] = {
         .appendField("0");
     this.setOutput(true, "Number");
     this.setColour(230);
- this.setTooltip("Input Value of Zero");
+ this.setTooltip("Value of 0");
  this.setHelpUrl("https://www.csee.umbc.edu/portal/help/VHDL/verilog/types.html");
   }
 };
@@ -100,13 +100,29 @@ Blockly.Blocks['decimal_octa'] = {
   }
 };
 
+Blockly.Blocks['concat'] = {
+  init: function() {
+    this.appendValueInput("arg1")
+        .setCheck(null);
+    this.appendDummyInput()
+        .appendField("Concatinate");
+    this.appendValueInput("arg2")
+        .setCheck(null);
+    this.setInputsInline(false);
+    this.setOutput(true, null);
+    this.setColour(330);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+}
+
 Blockly.Blocks['end_module'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("end");
     this.setPreviousStatement(true, null);
     this.setColour(345);
- this.setTooltip("");
+ this.setTooltip('Block must be attached at the end');
  this.setHelpUrl("End");
   }
 };
@@ -122,8 +138,8 @@ Blockly.Blocks['module_dec'] = {
     this.setInputsInline(false);
     this.setNextStatement(true, null);
     this.setColour(150);
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip('Declare new Verilog module');
+ this.setHelpUrl('');
   }
 };
 
@@ -135,7 +151,7 @@ Blockly.Blocks['pos_edge'] = {
     this.setInputsInline(true);
     this.setOutput(true, null);
     this.setColour(300);
- this.setTooltip("Rising edge");
+ this.setTooltip('Rising edge of');
  this.setHelpUrl("https://electronics.stackexchange.com/questions/326662/posedge-in-verilog");
   }
 };
@@ -148,7 +164,7 @@ Blockly.Blocks['neg_edge'] = {
     this.setInputsInline(true);
     this.setOutput(true, null);
     this.setColour(100);
- this.setTooltip("Rising edge");
+ this.setTooltip('Falling edge of');
  this.setHelpUrl("https://electronics.stackexchange.com/questions/326662/posedge-in-verilog");
   }
 };
@@ -165,7 +181,7 @@ Blockly.Blocks['input_block'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(165);
- this.setTooltip("Create a new Input variable");
+ this.setTooltip('Declare variable as Input');
  this.setHelpUrl("http://www.asic-world.com/verilog/syntax3.html");
   }
 };
@@ -182,7 +198,7 @@ Blockly.Blocks['output_block'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(200);
- this.setTooltip("Create a new Output variable");
+ this.setTooltip('Declare variable as Output');
  this.setHelpUrl("http://www.asic-world.com/verilog/syntax3.html");
   }
 };
@@ -199,7 +215,7 @@ Blockly.Blocks['wire_block'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(250);
- this.setTooltip("Create a new variable with wire type");
+ this.setTooltip('Declare variable as a wire');
  this.setHelpUrl("http://www.asic-world.com/verilog/syntax3.html");
   }
 };
@@ -216,14 +232,14 @@ Blockly.Blocks['and_block'] = {
         .setCheck(null)
         .appendField("Attach first input");
     this.appendDummyInput()
-        .appendField("And with");
+        .appendField("AND-ed with");
     this.appendValueInput("arg2")
         .setCheck(null)
         .appendField("Attach second input");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(290);
-    this.setTooltip('');
+    this.setTooltip('Perform an AND between argument1 and argument2');
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -247,7 +263,55 @@ Blockly.Blocks['or_block'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(100);
-    this.setTooltip('');
+    this.setTooltip('Perform an OR between argument1 and argument2');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['xor_block'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Gate name")
+        .appendField(new Blockly.FieldTextInput("gateName"), "gName");
+    this.appendDummyInput()
+        .appendField("Output name")
+        .appendField(new Blockly.FieldTextInput("outName"), "oName");
+    this.appendValueInput("arg1")
+        .setCheck(null)
+        .appendField("Attach first input");
+    this.appendDummyInput()
+        .appendField("XOR-ed with");
+    this.appendValueInput("arg2")
+        .setCheck(null)
+        .appendField("Attach second input");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(140);
+    this.setTooltip('Perform a XOR between argument1 and argument2');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['nand_block'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Gate name")
+        .appendField(new Blockly.FieldTextInput("gateName"), "gName");
+    this.appendDummyInput()
+        .appendField("Output name")
+        .appendField(new Blockly.FieldTextInput("outName"), "oName");
+    this.appendValueInput("arg1")
+        .setCheck(null)
+        .appendField("Attach first input");
+    this.appendDummyInput()
+        .appendField("NAND-ed with");
+    this.appendValueInput("arg2")
+        .setCheck(null)
+        .appendField("Attach second input");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(140);
+    this.setTooltip('Perform a NAND between argument1 and argument2');
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -263,7 +327,7 @@ Blockly.Blocks['not_gate'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(20);
-    this.setTooltip('');
+    this.setTooltip('Negate the argument');
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -278,7 +342,7 @@ Blockly.Blocks['assign_block'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(330);
- this.setTooltip("Assign a variable a value");
+ this.setTooltip('Continous assignment');
  this.setHelpUrl("https://stackoverflow.com/questions/28751979/difference-between-behavioral-and-dataflow-in-verilog");
   }
 };
