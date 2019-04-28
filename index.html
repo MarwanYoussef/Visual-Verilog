@@ -26,8 +26,6 @@
     </head>
     <body>
         <div>
-            <button onclick="showJSCode()">Show Javascript Code</button>
-            <button onclick="showPYCode()">Show Python Code</button>
             <button onclick="ShowVerCode()">Show Verilog Code</button>
         </div>
         
@@ -83,6 +81,10 @@
                 <category name="Data Flow" colour="200">
                     <block type="assign_block"></block>
                 </category>
+                <category name="TestBench" colour="200">
+                    <block type="module_test"></block>
+                    <block type="end_module"></block>
+                </category>
             </xml>
         </div>
         <script>
@@ -106,18 +108,6 @@
                         scaleSpeed: 1.2},
                         trashcan: true
                 });
-
-                function showJSCode(){
-                    Blockly.JavaScript.INFINITE_LOOP_TRAP=null;
-                    var code = Blockly.JavaScript.workspaceToCode(workspace)
-                    alert(code)
-                }
-
-                function showPYCode(){
-                    Blockly.Python.INFINITE_LOOP_TRAP=null;
-                    var code = Blockly.Python.workspaceToCode(workspace)
-                    alert(code)
-                }
 
                 function ShowVerCode(){
                     Blockly.Verilog.INFINITE_LOOP_TRAP = null;

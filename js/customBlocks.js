@@ -114,7 +114,7 @@ Blockly.Blocks['concat'] = {
     this.setTooltip('');
     this.setHelpUrl('http://www.example.com/');
   }
-}
+};
 
 Blockly.Blocks['end_module'] = {
   init: function() {
@@ -344,5 +344,28 @@ Blockly.Blocks['assign_block'] = {
     this.setColour(330);
  this.setTooltip('Continous assignment');
  this.setHelpUrl("https://stackoverflow.com/questions/28751979/difference-between-behavioral-and-dataflow-in-verilog");
+  }
+};
+
+Blockly.Blocks['end_module'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("end");
+    this.setPreviousStatement(true, null);
+    this.setColour(345);
+ this.setTooltip('Block must be attached at the end');
+ this.setHelpUrl("End");
+  }
+};
+
+Blockly.Blocks['module_test'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Create new Testbench module with name")
+        .appendField(new Blockly.FieldTextInput("ModuleName"), "modName");
+    this.setNextStatement(true, null);
+    this.setColour(150);
+ this.setTooltip('Declare new Verilog module');
+ this.setHelpUrl('');
   }
 };

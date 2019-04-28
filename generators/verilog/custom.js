@@ -32,7 +32,7 @@ Blockly.Verilog['one'] = function(block) {
     var value_condition = Blockly.Verilog.valueToCode(block, 'condition', Blockly.Verilog.ORDER_ATOMIC);
     var statements_body = Blockly.Verilog.statementToCode(block, 'body');
     // TODO: Assemble Verilog into code variable.
-    var code = 'always @ (' + value_condition + ')' + 'begin\n' + statements_body + '\n'+ 'end';
+    var code = 'always @ (' + value_condition + ')\n' + 'begin\n' + statements_body + '\n'+ 'end\n';
     return code;
   }
 
@@ -193,6 +193,13 @@ Blockly.Verilog['one'] = function(block) {
     var code = '{' + value_arg1 + ',' + value_arg2 + '}' + ';\n';
     // TODO: Change ORDER_NONE to the correct strength.
     return [code, Blockly.Verilog.ORDER_NONE];
+  };
+
+  Blockly.Verilog['module_test'] = function(block) {
+    var text_modname = block.getFieldValue('modName');
+    // TODO: Assemble Verilog into code variable.
+    var code = 'module ' + text_modname + ' ()' + ';\n';
+    return code;
   };
 
   
