@@ -182,7 +182,10 @@ Blockly.Verilog['one'] = function(block) {
     var variable_var = Blockly.Verilog.variableDB_.getName(block.getFieldValue('var'), Blockly.Variables.NAME_TYPE);
     var value_name = Blockly.Verilog.valueToCode(block, 'NAME', Blockly.Verilog.ORDER_ATOMIC);
     // TODO: Assemble Verilog into code variable.
-    var code = 'assign ' + variable_var + ' = ' + value_name+ ';\n';
+    if(value_name == '')
+      var code = 'assign ' + variable_var + ' = X' + ';\n';
+    else
+      var code = 'assign ' + variable_var + ' = ' + value_name+ ';\n';
     return code;
   };
 
@@ -198,8 +201,88 @@ Blockly.Verilog['one'] = function(block) {
   Blockly.Verilog['module_test'] = function(block) {
     var text_modname = block.getFieldValue('modName');
     // TODO: Assemble Verilog into code variable.
-    var code = 'module ' + text_modname + ' ()' + ';\n';
+    var code = 'module ' + text_modname + ';\n';
     return code;
   };
 
-  
+  Blockly.Verilog['input_simu'] = function(block) {
+    var text_name = block.getFieldValue('NAME');
+    var value_size = Blockly.Verilog.valueToCode(block, 'size', Blockly.Verilog.ORDER_ATOMIC);
+    // TODO: Assemble Verilog into code variable.
+    var code;
+    if(value_size == 0 || value_size == 1){
+      code = 'reg ' + text_name + ';\n';
+    }else{
+      code = 'reg ' + '['+ (parseInt(value_size)-1)+':'+'0] '+ text_name + ';\n';
+    }
+    return code;
+  };
+
+  Blockly.Verilog['output_simu'] = function(block) {
+    var text_name = block.getFieldValue('NAME');
+    var value_size = Blockly.Verilog.valueToCode(block, 'size', Blockly.Verilog.ORDER_ATOMIC);
+    // TODO: Assemble Verilog into code variable.
+    var code;
+    if(value_size == 0 || value_size == 1){
+      code = 'wire ' + text_name + ';\n';
+    }else{
+      code = 'wire ' + '['+ (parseInt(value_size)-1)+':'+'0] '+ text_name + ';\n';
+    }
+    return code;
+  };
+
+  Blockly.Verilog['decimal_binary_return'] = function(block) {
+    var valuex = Blockly.Verilog.valueToCode(block, 'number', Blockly.Verilog.ORDER_NONE);
+    var value = parseFloat(valuex);
+    if(isNaN(value))
+      var code = "1'bx";
+    else{
+      var stringV = value.toString(2).length;
+      var code = stringV + "'b" + value.toString(2);
+    }
+    return [code, Blockly.Verilog.ORDER_NONE];
+  };
+
+
+  Blockly.Verilog['decimal_hexa_return'] = function(block) {
+    var valuex = Blockly.Verilog.valueToCode(block, 'number', Blockly.Verilog.ORDER_NONE);
+    var value = parseFloat(valuex);
+    if(isNaN(value))
+      var code = "1'hx";
+    else{
+      var stringV = value.toString(16).length;
+      var code = stringV + "'h" + value.toString(16);
+    }
+    return [code, Blockly.Verilog.ORDER_NONE];
+  };
+
+  Blockly.Verilog['decimal_octal_return'] = function(block) {
+    var valuex = Blockly.Verilog.valueToCode(block, 'number', Blockly.Verilog.ORDER_NONE);
+    var value = parseFloat(valuex);
+    if(isNaN(value))
+      var code = "1'ox";
+    else{
+      var stringV = value.toString(8).length;
+      var code = stringV + "'o" + value.toString(8);
+    }
+    return [code, Blockly.Verilog.ORDER_NONE];
+  };
+
+  Blockly.Verilog['monitor'] = function(block) {
+    var value_name = Blockly.Verilog.valueToCode(block, 'NAME', Blockly.Verilog.ORDER_ATOMIC);
+    // TODO: Assemble Verilog into code variable.
+    if(value_name == ''){
+      var code = '$monitor (X)';
+      console.log('monitor must take a variable argument')
+    }
+    else
+      var code = '$monitor (' + value_name + ')' + ';\n';
+    return code;
+  };
+
+  Blockly.Verilog['intial'] = function(block) {
+    var statements_body = Blockly.Verilog.statementToCode(block, 'body');
+    // TODO: Assemble Verilog into code variable.
+    var code = 'initial begin\n' + statements_body + '\n' + 'end\n';
+    return code;
+  };

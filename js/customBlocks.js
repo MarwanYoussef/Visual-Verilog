@@ -365,7 +365,109 @@ Blockly.Blocks['module_test'] = {
         .appendField(new Blockly.FieldTextInput("ModuleName"), "modName");
     this.setNextStatement(true, null);
     this.setColour(150);
- this.setTooltip('Declare new Verilog module');
+ this.setTooltip('Declare new Verilog testbench module');
  this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['input_simu'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Declare new variable")
+        .appendField(new Blockly.FieldTextInput("VarName"), "NAME")
+        .appendField("as Input");
+    this.appendValueInput("size")
+        .setCheck("Number")
+        .appendField("This input consists of these number of bits");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(320);
+ this.setTooltip('Declare input variable in Simulation module');
+ this.setHelpUrl("http://www.asic-world.com/verilog/syntax3.html");
+  }
+};
+
+Blockly.Blocks['output_simu'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Declare new variable")
+        .appendField(new Blockly.FieldTextInput("VarName"), "NAME")
+        .appendField("as Output");
+    this.appendValueInput("size")
+        .setCheck("Number")
+        .appendField("This output consists of these number of bits");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(120);
+ this.setTooltip('Declare output variable in Simulation module');
+ this.setHelpUrl("http://www.asic-world.com/verilog/syntax3.html");
+  }
+};
+
+Blockly.Blocks['decimal_binary_return'] = {
+  init: function() {
+    this.appendValueInput("number")
+        .setCheck("Number")
+        .appendField("Decimal to Binary");
+    this.setInputsInline(false);
+    this.setOutput(true, null);
+    this.setColour(120);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['decimal_hexa_return'] = {
+  init: function() {
+    this.appendValueInput("number")
+        .setCheck("Number")
+        .appendField("Decimal to Hexadecimal");
+    this.setInputsInline(false);
+    this.setOutput(true, null);
+    this.setColour(120);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['decimal_octal_return'] = {
+  init: function() {
+    this.appendValueInput("number")
+        .setCheck("Number")
+        .appendField("Decimal to Octal");
+    this.setInputsInline(false);
+    this.setOutput(true, null);
+    this.setColour(120);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['monitor'] = {
+  init: function() {
+    this.appendValueInput("NAME")
+        .setCheck(null)
+        .appendField("Display changes of ");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(50);
+ this.setTooltip('Display values in case of any change');
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['intial'] = {
+  init: function() {
+    this.appendDummyInput("condition")
+        .appendField("Execute the following at t=0");
+    this.appendStatementInput("body")
+        .setCheck(null)
+        .appendField("do");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(165);
+ this.setTooltip("");
+ this.setHelpUrl("http://referencedesigner.com/tutorials/verilog/verilog_16.php");
   }
 };

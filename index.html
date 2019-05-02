@@ -4,17 +4,11 @@
         <title>Visual Programming for Verilog</title>
         <script src="js/blockly_compressed.js"></script>
         <script src="js/blocks_compressed.js"></script>
-        <script src="js/javascript_compressed.js"></script>
-        <script src="js/python_compressed.js"></script>
         <script src="js/verilog_compressed.js"></script>
         <script src="js/en.js"></script>
         <script src="js/customBlocks.js"></script>
-        <script src="js/lists.js"></script>
         <script src="js/logic.js"></script>
-        <script src="js/loops.js"></script>
         <script src="js/math.js"></script>
-        <script src="js/procedures.js"></script>
-        <script src="js/text.js"></script>
         <script src="js/variables.js"></script>
         <script src="js/custom.js"></script>
         <script src="generators/verilog.js"></script>
@@ -65,6 +59,9 @@
                     <block type="decimal_binary"></block>
                     <block type="decimal_hexa"></block>
                     <block type="decimal_octa"></block>
+                    <block type="decimal_binary_return"></block>
+                    <block type="decimal_hexa_return"></block>
+                    <block type="decimal_octal_return"></block>
                 </category>
                 <category name="Logic Operators" colour="100">
                     <block type="and_block"></block>
@@ -81,9 +78,15 @@
                 <category name="Data Flow" colour="200">
                     <block type="assign_block"></block>
                 </category>
-                <category name="TestBench" colour="200">
+                <category name="Simulation1" colour="270">
                     <block type="module_test"></block>
                     <block type="end_module"></block>
+                    <block type="input_simu"></block>
+                    <block type="output_simu"></block>
+                    <block type="monitor"></block>
+                </category>
+                <category name="Simulation2" colour="300">
+                    <block type="intial"></block>
                 </category>
             </xml>
         </div>

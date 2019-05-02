@@ -127,7 +127,7 @@ Blockly.Verilog['logic_compare'] = function(block) {
         Blockly.Verilog.ORDER_CONDITIONAL) || 'X';
     var value_else = Blockly.Verilog.valueToCode(block, 'ELSE',
         Blockly.Verilog.ORDER_CONDITIONAL) || 'X';
-    var code = value_then + ' ? ' + value_if + ' : ' + value_else;
+    var code = value_if + ' ? ' + value_then + ' : ' + value_else;
     return [code, Blockly.Verilog.ORDER_CONDITIONAL];
   };
   
