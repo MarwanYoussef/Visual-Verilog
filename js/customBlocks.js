@@ -471,3 +471,16 @@ Blockly.Blocks['intial'] = {
  this.setHelpUrl("http://referencedesigner.com/tutorials/verilog/verilog_16.php");
   }
 };
+
+Blockly.Blocks['display_block'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Print ")
+        .appendField(new Blockly.FieldTextInput("text"), "text");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(210);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};

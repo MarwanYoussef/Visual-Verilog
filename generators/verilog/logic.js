@@ -38,7 +38,7 @@ Blockly.Verilog['controls_if'] = function(block) {
             Blockly.Verilog.ORDER_NONE) || '0';
         branchCode = Blockly.Verilog.statementToCode(block, 'DO' + n);
         code += (n > 0 ? ' else ' : '') +
-            'if (' + conditionCode + ') ' + '\n \tbegin\n' + branchCode+ '\n' + ' end \n';
+            'if (' + conditionCode + ') ' + '\tbegin\n' + branchCode+ ' end \n';
         ++n;
     } while (block.getInput('IF' + n));
 

@@ -13,6 +13,7 @@
         <script src="js/custom.js"></script>
         <script src="generators/verilog.js"></script>
         <script src="generators/verilog/custom.js"></script>
+        <script src="generators/verilog/math.js"></script>
         <script src="generators/verilog/logic.js"></script>
         <script src="generators/verilog/loops.js"></script>
         <script src="generators/verilog/variables.js"></script>
@@ -80,13 +81,14 @@
                 </category>
                 <category name="Simulation1" colour="270">
                     <block type="module_test"></block>
+                    <block type="intial"></block>
                     <block type="end_module"></block>
                     <block type="input_simu"></block>
                     <block type="output_simu"></block>
-                    <block type="monitor"></block>
                 </category>
                 <category name="Simulation2" colour="300">
-                    <block type="intial"></block>
+                    <block type="display_block"></block>
+                    <block type="monitor"></block>
                 </category>
             </xml>
         </div>

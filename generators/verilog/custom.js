@@ -283,6 +283,13 @@ Blockly.Verilog['one'] = function(block) {
   Blockly.Verilog['intial'] = function(block) {
     var statements_body = Blockly.Verilog.statementToCode(block, 'body');
     // TODO: Assemble Verilog into code variable.
-    var code = 'initial begin\n' + statements_body + '\n' + 'end\n';
+    var code = 'initial begin\n' + statements_body + 'end\n';
+    return code;
+  };
+
+  Blockly.Verilog['display_block'] = function(block) {
+    var text_text = block.getFieldValue('text');
+    // TODO: Assemble Verilog into code variable.
+    var code = '$display (' +'"' + text_text + '")' + ';\n';
     return code;
   };
