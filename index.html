@@ -2,6 +2,7 @@
     <head>
         <meta charset="utf-8">
         <title>Visual Programming for Verilog</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
         <script src="js/blockly_compressed.js"></script>
         <script src="js/blocks_compressed.js"></script>
         <script src="js/verilog_compressed.js"></script>
@@ -21,7 +22,9 @@
     </head>
     <body>
         <div>
-            <button onclick="ShowVerCode()">Show Verilog Code</button>
+            <button class="button" style="vertical-align:middle" onclick="ShowVerCode()">
+                <span>Show Verilog Code</span>
+            </button>
         </div>
         
         <div id="blocklyDiv">
@@ -64,11 +67,16 @@
                     <block type="decimal_hexa_return"></block>
                     <block type="decimal_octal_return"></block>
                 </category>
-                <category name="Logic Operators" colour="100">
+                <category name="Gate level" colour="140">
                     <block type="and_block"></block>
                     <block type="or_block"></block>
                     <block type="not_gate"></block>
                     <block type="xor_block"></block>
+                    <block type="nand_block"></block>
+                    <block type="nor_block"></block>
+                    <block type="xnor_block"></block>
+                </category>
+                <category name="Logic Operators" colour="100">
                     <block type="logic_negate"></block>
                     <block type="logic_operation"></block>
                     <block type="logic_ternary"></block>
@@ -89,6 +97,8 @@
                 <category name="Simulation2" colour="300">
                     <block type="display_block"></block>
                     <block type="monitor"></block>
+                    <block type="time_block"></block>
+                    <block type="finish_block"></block>
                 </category>
             </xml>
         </div>

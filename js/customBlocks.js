@@ -244,6 +244,78 @@ Blockly.Blocks['and_block'] = {
   }
 };
 
+Blockly.Blocks['nand_block'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Gate name")
+        .appendField(new Blockly.FieldTextInput("gateName"), "gName");
+    this.appendDummyInput()
+        .appendField("Output name")
+        .appendField(new Blockly.FieldTextInput("outName"), "oName");
+    this.appendValueInput("arg1")
+        .setCheck(null)
+        .appendField("Attach first input");
+    this.appendDummyInput()
+        .appendField("NAND-ed with");
+    this.appendValueInput("arg2")
+        .setCheck(null)
+        .appendField("Attach second input");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(320);
+    this.setTooltip('Perform an NAND between argument1 and argument2');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['nor_block'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Gate name")
+        .appendField(new Blockly.FieldTextInput("gateName"), "gName");
+    this.appendDummyInput()
+        .appendField("Output name")
+        .appendField(new Blockly.FieldTextInput("outName"), "oName");
+    this.appendValueInput("arg1")
+        .setCheck(null)
+        .appendField("Attach first input");
+    this.appendDummyInput()
+        .appendField("NOR-ed with");
+    this.appendValueInput("arg2")
+        .setCheck(null)
+        .appendField("Attach second input");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(50);
+    this.setTooltip('Perform an NOR between argument1 and argument2');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['xnor_block'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Gate name")
+        .appendField(new Blockly.FieldTextInput("gateName"), "gName");
+    this.appendDummyInput()
+        .appendField("Output name")
+        .appendField(new Blockly.FieldTextInput("outName"), "oName");
+    this.appendValueInput("arg1")
+        .setCheck(null)
+        .appendField("Attach first input");
+    this.appendDummyInput()
+        .appendField("XNOR-ed with");
+    this.appendValueInput("arg2")
+        .setCheck(null)
+        .appendField("Attach second input");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(120);
+    this.setTooltip('Perform an XNOR between argument1 and argument2');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
 Blockly.Blocks['or_block'] = {
   init: function() {
     this.appendDummyInput()
@@ -477,6 +549,32 @@ Blockly.Blocks['display_block'] = {
     this.appendDummyInput()
         .appendField("Print ")
         .appendField(new Blockly.FieldTextInput("text"), "text");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(210);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['time_block'] = {
+  init: function() {
+    this.appendValueInput("interval")
+        .setCheck("Number")
+        .appendField("Append a time value");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['finish_block'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Finish simulation");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(210);

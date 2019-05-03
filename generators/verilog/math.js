@@ -35,5 +35,5 @@ Blockly.Verilog['math_change'] = function(block) {
     var varName = Blockly.Verilog.variableDB_.getName(block.getFieldValue('VAR'),
         Blockly.Variables.NAME_TYPE);
     console.log(varName, argument0)
-    return varName + ' = ' + argument0;
+    return varName + ' = ' + varName + ' + ' +argument0 + ';\n';
   };
