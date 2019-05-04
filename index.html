@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Visual Programming for Verilog</title>
+        <title>Visual Verilog</title>
         <link rel="stylesheet" type="text/css" href="styles.css">
         <script src="js/blockly_compressed.js"></script>
         <script src="js/blocks_compressed.js"></script>
@@ -23,7 +23,11 @@
     <body>
         <div>
             <button class="button" style="vertical-align:middle" onclick="ShowVerCode()">
-                <span>Show Verilog Code</span>
+                <span>Show Verilog Module</span>
+            </button>
+            <button class="button" style="vertical-align: middle" 
+                id="button1" onclick="simuLink()">
+                <span>Go to TestBench generator</span>
             </button>
         </div>
         
@@ -48,6 +52,8 @@
                     <block type="input_block"></block>
                     <block type="output_block"></block>
                     <block type="wire_block"></block>
+                    <block type="reg_block"></block>
+                    <block type="inout_block"></block>
                     <block type="end_module"></block>
                 </category>
                 <category name="Values" colour="230">
@@ -67,11 +73,13 @@
                     <block type="decimal_hexa_return"></block>
                     <block type="decimal_octal_return"></block>
                 </category>
-                <category name="Gate level" colour="140">
+                <category name="Gate level1" colour="140">
                     <block type="and_block"></block>
                     <block type="or_block"></block>
                     <block type="not_gate"></block>
                     <block type="xor_block"></block>
+                </category>
+                <category name="Gate level2" colour="160">
                     <block type="nand_block"></block>
                     <block type="nor_block"></block>
                     <block type="xnor_block"></block>
@@ -86,19 +94,6 @@
                 </category>
                 <category name="Data Flow" colour="200">
                     <block type="assign_block"></block>
-                </category>
-                <category name="Simulation1" colour="270">
-                    <block type="module_test"></block>
-                    <block type="intial"></block>
-                    <block type="end_module"></block>
-                    <block type="input_simu"></block>
-                    <block type="output_simu"></block>
-                </category>
-                <category name="Simulation2" colour="300">
-                    <block type="display_block"></block>
-                    <block type="monitor"></block>
-                    <block type="time_block"></block>
-                    <block type="finish_block"></block>
                 </category>
             </xml>
         </div>
@@ -128,6 +123,9 @@
                     Blockly.Verilog.INFINITE_LOOP_TRAP = null;
                     var code = Blockly.Verilog.workspaceToCode(workspace)
                     alert(code)
+                }
+                document.getElementById('button1').onclick = function(){
+                    location.href = "simulation.html";
                 }
         </script>                  
     </body>

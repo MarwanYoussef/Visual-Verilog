@@ -137,6 +137,32 @@ Blockly.Verilog['one'] = function(block) {
     return code;
   };
 
+  Blockly.Verilog['reg_block'] = function(block) {
+    var text_name = block.getFieldValue('NAME');
+    var value_size = Blockly.Verilog.valueToCode(block, 'size', Blockly.Verilog.ORDER_ATOMIC);
+    // TODO: Assemble Verilog into code variable.
+    var code;
+    if(value_size == 0 || value_size == 1){
+      code = 'reg ' + text_name + ';\n';
+    }else{
+      code = 'reg ' + '['+ (parseInt(value_size)-1)+':'+'0] '+ text_name + ';\n';
+    }
+    return code;
+  };
+
+  Blockly.Verilog['inout_block'] = function(block) {
+    var text_name = block.getFieldValue('NAME');
+    var value_size = Blockly.Verilog.valueToCode(block, 'size', Blockly.Verilog.ORDER_ATOMIC);
+    // TODO: Assemble Verilog into code variable.
+    var code;
+    if(value_size == 0 || value_size == 1){
+      code = 'inout ' + text_name + ';\n';
+    }else{
+      code = 'inout ' + '['+ (parseInt(value_size)-1)+':'+'0] '+ text_name + ';\n';
+    }
+    return code;
+  };
+
   Blockly.Verilog['and_block'] = function(block) {
     var text_gname = block.getFieldValue('gName');
     var text_oname = block.getFieldValue('oName');
@@ -176,7 +202,7 @@ Blockly.Verilog['one'] = function(block) {
     var value_arg1 = Blockly.Verilog.valueToCode(block, 'arg1', Blockly.Verilog.ORDER_ATOMIC);
     var value_arg2 = Blockly.Verilog.valueToCode(block, 'arg2', Blockly.Verilog.ORDER_ATOMIC);
     // TODO: Assemble Verilog into code variable.
-    var code = 'and ' + text_gname + ' (' + text_oname + ', ' + value_arg1 + ', ' + value_arg2
+    var code = 'nand ' + text_gname + ' (' + text_oname + ', ' + value_arg1 + ', ' + value_arg2
     + ' )' +';\n';
     return code;
   };
@@ -187,7 +213,7 @@ Blockly.Verilog['one'] = function(block) {
     var value_arg1 = Blockly.Verilog.valueToCode(block, 'arg1', Blockly.Verilog.ORDER_ATOMIC);
     var value_arg2 = Blockly.Verilog.valueToCode(block, 'arg2', Blockly.Verilog.ORDER_ATOMIC);
     // TODO: Assemble Verilog into code variable.
-    var code = 'and ' + text_gname + ' (' + text_oname + ', ' + value_arg1 + ', ' + value_arg2
+    var code = 'nor ' + text_gname + ' (' + text_oname + ', ' + value_arg1 + ', ' + value_arg2
     + ' )' +';\n';
     return code;
   };
@@ -198,7 +224,7 @@ Blockly.Verilog['one'] = function(block) {
     var value_arg1 = Blockly.Verilog.valueToCode(block, 'arg1', Blockly.Verilog.ORDER_ATOMIC);
     var value_arg2 = Blockly.Verilog.valueToCode(block, 'arg2', Blockly.Verilog.ORDER_ATOMIC);
     // TODO: Assemble Verilog into code variable.
-    var code = 'and ' + text_gname + ' (' + text_oname + ', ' + value_arg1 + ', ' + value_arg2
+    var code = 'xnor ' + text_gname + ' (' + text_oname + ', ' + value_arg1 + ', ' + value_arg2
     + ' )' +';\n';
     return code;
   };

@@ -220,6 +220,40 @@ Blockly.Blocks['wire_block'] = {
   }
 };
 
+Blockly.Blocks['reg_block'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Declare new variable")
+        .appendField(new Blockly.FieldTextInput("VarName"), "NAME")
+        .appendField("as Register");
+    this.appendValueInput("size")
+        .setCheck("Number")
+        .appendField("This Register consists of these number of bits");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(180);
+ this.setTooltip('Declare variable as Register');
+ this.setHelpUrl("http://www.asic-world.com/verilog/syntax3.html");
+  }
+};
+
+Blockly.Blocks['inout_block'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Declare new variable")
+        .appendField(new Blockly.FieldTextInput("VarName"), "NAME")
+        .appendField("as Input/Output");
+    this.appendValueInput("size")
+        .setCheck("Number")
+        .appendField("This I/O consists of these number of bits");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(210);
+ this.setTooltip('Declare variable as both Input and Output');
+ this.setHelpUrl("http://www.asic-world.com/verilog/syntax3.html");
+  }
+};
+
 Blockly.Blocks['and_block'] = {
   init: function() {
     this.appendDummyInput()
@@ -310,7 +344,7 @@ Blockly.Blocks['xnor_block'] = {
         .appendField("Attach second input");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(120);
+    this.setColour(200);
     this.setTooltip('Perform an XNOR between argument1 and argument2');
     this.setHelpUrl('http://www.example.com/');
   }
@@ -382,7 +416,7 @@ Blockly.Blocks['nand_block'] = {
         .appendField("Attach second input");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(140);
+    this.setColour(180);
     this.setTooltip('Perform a NAND between argument1 and argument2');
     this.setHelpUrl('http://www.example.com/');
   }
