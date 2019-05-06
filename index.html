@@ -8,6 +8,7 @@
         <script src="js/verilog_compressed.js"></script>
         <script src="js/en.js"></script>
         <script src="js/customBlocks.js"></script>
+        <script src="js/text.js"></script>
         <script src="js/logic.js"></script>
         <script src="js/math.js"></script>
         <script src="js/variables.js"></script>
@@ -17,6 +18,7 @@
         <script src="generators/verilog/math.js"></script>
         <script src="generators/verilog/logic.js"></script>
         <script src="generators/verilog/loops.js"></script>
+        <script src="generators/verilog/text.js"></script>
         <script src="generators/verilog/variables.js"></script>
         <script src="generators/verilog/variables_dynamic.js"></script>
     </head>
@@ -41,9 +43,7 @@
                     <block type="logic_compare"></block>
                     <block type="logic_operation"></block>
                     <block type="logic_null"></block>
-                    <block type="controls_if_if"></block>
-                    <block type="controls_if_elseif"></block>
-                    <block type="controls_if_else"></block>
+                    <block type="if_else_block"></block>
                 </category>
                 <category name="Dynamic Variables" colour="330" custom="VARIABLE">
                 </category>
@@ -63,6 +63,7 @@
                     <block type="dont_care"></block>
                     <block type="pos_edge"></block>
                     <block type="neg_edge"></block>
+                    <block type="text"></block>
                 </category>
                 <category name="Numbers" colour="280">
                     <block type="math_number"></block>
@@ -91,9 +92,29 @@
                 </category>
                 <category name="Behavioral" colour="140">
                     <block type="always_blk"></block>
+                    <block type="logic_operation_2"></block>
                 </category>
                 <category name="Data Flow" colour="200">
                     <block type="assign_block"></block>
+                </category>
+                <category name="Data Types-NET" colour="230">
+                    
+                </category>
+                <category name="Data Types-REG" colour="260">
+                    
+                </category>
+                <category name="Simulation1" colour="300">
+                    <block type="module_test"></block>
+                    <block type="intial"></block>
+                    <block type="end_module"></block>
+                    <block type="input_simu"></block>
+                    <block type="output_simu"></block>
+                </category>
+                <category name="Simulation2" colour="320">
+                    <block type="display_block"></block>
+                    <block type="monitor_block"></block>
+                    <block type="time_block"></block>
+                    <block type="finish_block"></block>
                 </category>
             </xml>
         </div>

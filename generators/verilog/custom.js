@@ -49,7 +49,7 @@ Blockly.Verilog['one'] = function(block) {
     var value_val = Blockly.Verilog.valueToCode(block, 'val', Blockly.Verilog.ORDER_ATOMIC);
     // TODO: Assemble Verilog into code variable.
     var value = parseFloat(value_val);
-    var stringV = value.toString(16).length;
+    var stringV = value.toString(2).length;
     var code = stringV + "'h" + value.toString(16) +';\n';
     return code;
   };
@@ -58,7 +58,7 @@ Blockly.Verilog['one'] = function(block) {
     var value_val = Blockly.Verilog.valueToCode(block, 'val', Blockly.Verilog.ORDER_ATOMIC);
     // TODO: Assemble Verilog into code variable.
     var value = parseFloat(value_val);
-    var stringV = value.toString(8).length;
+    var stringV = value.toString(2).length;
     var code = stringV + "'o" + value.toString(8) +';\n';
     return code;
   };
@@ -248,19 +248,10 @@ Blockly.Verilog['one'] = function(block) {
     return code;
   };
 
-  Blockly.Verilog['concat'] = function(block) {
-    var value_arg1 = Blockly.Verilog.valueToCode(block, 'arg1', Blockly.Verilog.ORDER_ATOMIC);
-    var value_arg2 = Blockly.Verilog.valueToCode(block, 'arg2', Blockly.Verilog.ORDER_ATOMIC);
-    // TODO: Assemble Verilog into code variable.
-    var code = '{' + value_arg1 + ',' + value_arg2 + '}' + ';\n';
-    // TODO: Change ORDER_NONE to the correct strength.
-    return [code, Blockly.Verilog.ORDER_NONE];
-  };
-
   Blockly.Verilog['module_test'] = function(block) {
     var text_modname = block.getFieldValue('modName');
     // TODO: Assemble Verilog into code variable.
-    var code = 'module ' + text_modname + ';\n';
+    var code = 'module ' + text_modname + '();\n';
     return code;
   };
 
@@ -309,7 +300,7 @@ Blockly.Verilog['one'] = function(block) {
     if(isNaN(value))
       var code = "1'hx";
     else{
-      var stringV = value.toString(16).length;
+      var stringV = value.toString(2).length;
       var code = stringV + "'h" + value.toString(16);
     }
     return [code, Blockly.Verilog.ORDER_NONE];
@@ -321,22 +312,10 @@ Blockly.Verilog['one'] = function(block) {
     if(isNaN(value))
       var code = "1'ox";
     else{
-      var stringV = value.toString(8).length;
+      var stringV = value.toString(2).length;
       var code = stringV + "'o" + value.toString(8);
     }
     return [code, Blockly.Verilog.ORDER_NONE];
-  };
-
-  Blockly.Verilog['monitor'] = function(block) {
-    var value_name = Blockly.Verilog.valueToCode(block, 'NAME', Blockly.Verilog.ORDER_ATOMIC);
-    // TODO: Assemble Verilog into code variable.
-    if(value_name == ''){
-      var code = '$monitor (X) ;\n';
-      console.log('monitor must take a variable argument')
-    }
-    else
-      var code = '$monitor (' + value_name + ')' + ';\n';
-    return code;
   };
 
   Blockly.Verilog['intial'] = function(block) {
@@ -354,12 +333,20 @@ Blockly.Verilog['one'] = function(block) {
   };
 
   Blockly.Verilog['time_block'] = function(block) {
-    var value_interval = Blockly.Verilog.valueToCode(block, 'interval', Blockly.Verilog.ORDER_ATOMIC);
+    var value_arg1 = Blockly.Verilog.valueToCode(block, 'arg1', Blockly.Verilog.ORDER_ATOMIC);
+    var statements_arg2 = Blockly.Verilog.statementToCode(block, 'arg2');
     // TODO: Assemble Verilog into code variable.
-    if(value_interval == null)
-      var code = '#1;\n';
-    else  
-      var code = '#'+ value_interval +';\n';
+    if(value_arg1 == '')
+      var code = '#1\n'+ statements_arg2 + '\n';
+    else
+      var code = '#' + value_arg1 + '\n' + statements_arg2 + '\n';
+    return code;
+  };
+
+  Blockly.Verilog['monitor_block'] = function(block) {
+    var text_names = block.getFieldValue('names');
+    // TODO: Assemble Verilog into code variable.
+    var code = '$monitor ( ' + text_names + ' );\n';
     return code;
   };
 
@@ -367,4 +354,40 @@ Blockly.Verilog['one'] = function(block) {
   // TODO: Assemble Verilog into code variable.
   var code = '$finish;\n';
   return code;
+  };
+
+  Blockly.Verilog['if_else_block'] = function(block) {
+    var value_condition_if = Blockly.Verilog.valueToCode(block, 'condition_if', Blockly.Verilog.ORDER_ATOMIC);
+    var statements_if_code = Blockly.Verilog.statementToCode(block, 'if_code');
+    var value_condition_else = Blockly.Verilog.valueToCode(block, 'condition_else', Blockly.Verilog.ORDER_ATOMIC);
+    var statements_else_code = Blockly.Verilog.statementToCode(block, 'else_code');
+    // TODO: Assemble Verilog into code variable.
+    var code = 'if ('+ value_condition_if + ') ' + 'begin \n' + statements_if_code +
+    'end\n' + 'else if (' + value_condition_else + ') ' + 'begin \n' + statements_else_code + 'end';
+    return code;
+  };
+
+  Blockly.Verilog['logic_operation_2'] = function(block) {
+    // Operations 'and', 'or'.
+    var operator = (block.getFieldValue('OP') == 'AND') ? 'and' : 'or';
+    var order = (operator == 'and') ? Blockly.Verilog.ORDER_AND :
+        Blockly.Verilog.ORDER_OR;
+    var argument0 = Blockly.Verilog.valueToCode(block, 'A', order);
+    var argument1 = Blockly.Verilog.valueToCode(block, 'B', order);
+    if (!argument0 && !argument1) {
+      // If there are no arguments, then the return value is false.
+      argument0 = '0';
+      argument1 = '0';
+    } else {
+      // Single missing arguments have no effect on the return value.
+      var defaultArgument = (operator == 'and') ? '1' : '0';
+      if (!argument0) {
+        argument0 = defaultArgument;
+      }
+      if (!argument1) {
+        argument1 = defaultArgument;
+      }
+    }
+    var code = argument0 + ' ' + operator + ' ' + argument1;
+    return [code, order];
   };

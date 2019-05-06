@@ -100,22 +100,6 @@ Blockly.Blocks['decimal_octa'] = {
   }
 };
 
-Blockly.Blocks['concat'] = {
-  init: function() {
-    this.appendValueInput("arg1")
-        .setCheck(null);
-    this.appendDummyInput()
-        .appendField("Concatinate");
-    this.appendValueInput("arg2")
-        .setCheck(null);
-    this.setInputsInline(false);
-    this.setOutput(true, null);
-    this.setColour(330);
-    this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
-  }
-};
-
 Blockly.Blocks['end_module'] = {
   init: function() {
     this.appendDummyInput()
@@ -549,16 +533,15 @@ Blockly.Blocks['decimal_octal_return'] = {
   }
 };
 
-Blockly.Blocks['monitor'] = {
+Blockly.Blocks['monitor_block'] = {
   init: function() {
-    this.appendValueInput("NAME")
-        .setCheck(null)
-        .appendField("Display changes of ");
-    this.setInputsInline(false);
+    this.appendDummyInput()
+        .appendField("Monitor variables ")
+        .appendField(new Blockly.FieldTextInput("variables"), "names");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(50);
- this.setTooltip('Display values in case of any change');
+    this.setColour(105);
+ this.setTooltip("");
  this.setHelpUrl("");
   }
 };
@@ -573,7 +556,7 @@ Blockly.Blocks['intial'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(165);
- this.setTooltip("");
+ this.setTooltip("Block to start the simulation phase");
  this.setHelpUrl("http://referencedesigner.com/tutorials/verilog/verilog_16.php");
   }
 };
@@ -586,21 +569,7 @@ Blockly.Blocks['display_block'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(210);
-    this.setTooltip('');
-    this.setHelpUrl('http://www.example.com/');
-  }
-};
-
-Blockly.Blocks['time_block'] = {
-  init: function() {
-    this.appendValueInput("interval")
-        .setCheck("Number")
-        .appendField("Append a time value");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(0);
-    this.setTooltip('');
+    this.setTooltip('Used to display some text');
     this.setHelpUrl('http://www.example.com/');
   }
 };
@@ -612,7 +581,44 @@ Blockly.Blocks['finish_block'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(210);
-    this.setTooltip('');
+    this.setTooltip('Finish the simulation by appending this block');
     this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['if_else_block'] = {
+  init: function() {
+    this.appendValueInput("condition_if")
+        .setCheck(null)
+        .appendField("if");
+    this.appendStatementInput("if_code")
+        .setCheck(null)
+        .appendField("do");
+    this.appendValueInput("condition_else")
+        .setCheck(null)
+        .appendField("else if");
+    this.appendStatementInput("else_code")
+        .setCheck(null)
+        .appendField("do");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(120);
+    this.setTooltip('if-else-if blocks with conditions for each');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
+
+Blockly.Blocks['time_block'] = {
+  init: function() {
+    this.appendValueInput("arg1")
+        .setCheck(null)
+        .appendField("at time =");
+    this.appendStatementInput("arg2")
+        .setCheck(null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(150);
+ this.setTooltip("After few seconds, code inside will be executed");
+ this.setHelpUrl("");
   }
 };

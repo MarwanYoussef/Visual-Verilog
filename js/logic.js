@@ -180,6 +180,36 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "helpUrl": "%{BKY_LOGIC_OPERATION_HELPURL}",
     "extensions": ["logic_op_tooltip"]
   },
+  //Block for logical operations: 'and', 'or' in behavioral modeling
+  {
+    "type": "logic_operation_2",
+    "message0": "%1 %2 %3",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "A",
+        "check": "Boolean"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "OP",
+        "options": [
+          ["%{BKY_LOGIC_OPERATION_AND}", "AND"],
+          ["%{BKY_LOGIC_OPERATION_OR}", "OR"]
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "B",
+        "check": "Boolean"
+      }
+    ],
+    "inputsInline": true,
+    "output": "Boolean",
+    "style": "logic_blocks",
+    "helpUrl": "%{BKY_LOGIC_OPERATION_HELPURL}",
+    "extensions": ["logic_op_tooltip"]
+  },
   // Block for negation.
   {
     "type": "logic_negate",
