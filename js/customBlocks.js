@@ -622,3 +622,20 @@ Blockly.Blocks['time_block'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['always_simu'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Always");
+    this.appendValueInput("delay")
+        .setCheck("Number")
+        .appendField("Attach delay value");
+    this.appendStatementInput("code")
+        .setCheck(null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
