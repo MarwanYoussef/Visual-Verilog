@@ -396,6 +396,6 @@ Blockly.Verilog['one'] = function(block) {
     var value_delay = Blockly.Verilog.valueToCode(block, 'delay', Blockly.Verilog.ORDER_ATOMIC);
     var statements_code = Blockly.Verilog.statementToCode(block, 'code');
     // TODO: Assemble Verilog into code variable.
-    var code = 'always #' + value_delay + ' '+ statements_code + ';\n';
+    var code = 'always #' + value_delay + ' '+ statements_code + '\n';
     return code;
   };

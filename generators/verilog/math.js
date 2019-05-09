@@ -36,4 +36,22 @@ Blockly.Verilog['math_change'] = function(block) {
         Blockly.Variables.NAME_TYPE);
     console.log(varName, argument0)
     return varName + ' = ' + varName + ' + ' +argument0 + ';\n';
+};
+
+Blockly.Verilog['math_arithmetic'] = function(block) {
+    // Basic arithmetic operators, and power.
+    var OPERATORS = {
+      'ADD': [' + ', Blockly.Verilog.ORDER_UNARY_PLUS],
+      'MINUS': [' - ', Blockly.Verilog.ORDER_UNARY_MINUS],
+      'MULTIPLY': [' * ', Blockly.Verilog.ORDER_MULT],
+      'DIVIDE': [' / ', Blockly.Verilog.ORDER_DIV],
+      'REMAINDER': [' % ', Blockly.Verilog.ORDER_MOD]
+    };
+    var tuple = OPERATORS[block.getFieldValue('OP')];
+    var operator = tuple[0];
+    var order = tuple[1];
+    var argument0 = Blockly.Verilog.valueToCode(block, 'A', order) || '0';
+    var argument1 = Blockly.Verilog.valueToCode(block, 'B', order) || '0';
+    var code = argument0 + operator + argument1;
+    return [code, order];
   };

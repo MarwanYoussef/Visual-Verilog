@@ -35,7 +35,7 @@
         
         <div id="blocklyDiv">
             <xml id="toolbox" style="display: none">
-                <category name="Logic" colour="230">
+                <category name="Logic Operators-1" colour="230">
                     <block type="logic_negate"></block>
                     <block type="logic_boolean"></block>
                     <block type="controls_if"></block>
@@ -43,7 +43,12 @@
                     <block type="logic_compare"></block>
                     <block type="logic_operation"></block>
                     <block type="logic_null"></block>
+                </category>
+                <category name="Logic Operators-2" colour="100">
                     <block type="if_else_block"></block>
+                    <block type="logic_negate"></block>
+                    <block type="logic_operation"></block>
+                    <block type="logic_ternary"></block>
                 </category>
                 <category name="Dynamic Variables" colour="330" custom="VARIABLE">
                 </category>
@@ -56,14 +61,17 @@
                     <block type="inout_block"></block>
                     <block type="end_module"></block>
                 </category>
+                <category name="Operators" colour="110">
+                    <block type="math_arithmetic"></block>
+                    <block type="text"></block>
+                    <block type="pos_edge"></block>
+                    <block type="neg_edge"></block>
+                </category>
                 <category name="Values" colour="230">
                     <block type="zero"></block>
                     <block type="one"></block>
                     <block type="high_impedence"></block>
                     <block type="dont_care"></block>
-                    <block type="pos_edge"></block>
-                    <block type="neg_edge"></block>
-                    <block type="text"></block>
                 </category>
                 <category name="Numbers" colour="280">
                     <block type="math_number"></block>
@@ -84,11 +92,6 @@
                     <block type="nand_block"></block>
                     <block type="nor_block"></block>
                     <block type="xnor_block"></block>
-                </category>
-                <category name="Logic Operators" colour="100">
-                    <block type="logic_negate"></block>
-                    <block type="logic_operation"></block>
-                    <block type="logic_ternary"></block>
                 </category>
                 <category name="Behavioral" colour="140">
                     <block type="always_blk"></block>
