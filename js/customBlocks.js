@@ -561,6 +561,21 @@ Blockly.Blocks['intial'] = {
   }
 };
 
+Blockly.Blocks['intial_par'] = {
+  init: function() {
+    this.appendDummyInput("condition")
+        .appendField("Execute the following all at t=0");
+    this.appendStatementInput("body")
+        .setCheck(null)
+        .appendField("do");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(300);
+ this.setTooltip("Block to start the parallel execution simulation phase");
+ this.setHelpUrl("http://referencedesigner.com/tutorials/verilog/verilog_16.php");
+  }
+};
+
 Blockly.Blocks['display_block'] = {
   init: function() {
     this.appendDummyInput()

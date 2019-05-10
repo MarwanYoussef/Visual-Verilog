@@ -58,6 +58,8 @@
                     <block type="xnor_block"></block>
                 </category>
                 <category name="Behavioral" colour="140">
+                    <block type="intial"></block>
+                    <block type="intial_par"></block>
                     <block type="always_blk"></block>
                     <block type="always_simu"></block>
                     <block type="logic_operation_2"></block>
@@ -113,7 +115,6 @@
                 </category>
                 <category name="Simulation1" colour="300">
                     <block type="module_test"></block>
-                    <block type="intial"></block>
                     <block type="input_simu"></block>
                     <block type="output_simu"></block>
                     <block type="end_module"></block>
@@ -149,12 +150,10 @@
                 });
 
                 function ShowVerCode(){
+                    window.open('http://www.techep.csi.cuny.edu/~zhangs/v.html', '_blank');
                     Blockly.Verilog.INFINITE_LOOP_TRAP = null;
-                    var code = Blockly.Verilog.workspaceToCode(workspace)
+                    var code = Blockly.Verilog.workspaceToCode(workspace);
                     alert(code)
-                }
-                document.getElementById('button1').onclick = function(){
-                    location.href = "simulation.html";
                 }
         </script>                  
     </body>
