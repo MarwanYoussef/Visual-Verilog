@@ -180,6 +180,39 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "helpUrl": "%{BKY_LOGIC_OPERATION_HELPURL}",
     "extensions": ["logic_op_tooltip"]
   },
+  //Block for bitwise operations
+  {
+    "type": "logic_operation3",
+    "message0": "%1 %2 %3",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "A",
+        "check": "Boolean"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "OP",
+        "options": [
+          ["%{BKY_LOGIC_OPERATION_AND}", "AND"],
+          ["%{BKY_LOGIC_OPERATION_OR}", "OR"],
+          ["NOT", "NOT"],
+          ["XOR", "XOR"],
+          ["XNOR", "XNOR"],
+        ]
+      },
+      {
+        "type": "input_value",
+        "name": "B",
+        "check": "Boolean"
+      }
+    ],
+    "inputsInline": true,
+    "output": "Boolean",
+    "style": "logic_blocks",
+    "helpUrl": "%{BKY_LOGIC_OPERATION_HELPURL}",
+    "extensions": ["logic_op_tooltip"]
+  },
   //Block for logical operations: 'and', 'or' in behavioral modeling
   {
     "type": "logic_operation_2",
@@ -224,6 +257,22 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "output": "Boolean",
     "style": "logic_blocks",
     "tooltip": "%{BKY_LOGIC_NEGATE_TOOLTIP}",
+    "helpUrl": "%{BKY_LOGIC_NEGATE_HELPURL}"
+  },
+  // Block for bitwise negation.
+  {
+    "type": "logic_negate3",
+    "message0": "%{BKY_LOGIC_NEGATE_TITLE}",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "BOOL",
+        "check": "Boolean"
+      }
+    ],
+    "output": "Boolean",
+    "style": "logic_blocks",
+    "tooltip": "Bitwise not; if input true changes to false and if false changes to true",
     "helpUrl": "%{BKY_LOGIC_NEGATE_HELPURL}"
   },
   // Block for null data type.

@@ -399,3 +399,28 @@ Blockly.Verilog['one'] = function(block) {
     var code = 'always #' + value_delay + ' '+ statements_code + '\n';
     return code;
   };
+
+  Blockly.Verilog['logic_operation3'] = function(block) {
+    // Basic arithmetic operators, and power.
+    var OPERATORS = {
+      'And': [' & ', Blockly.Verilog.ORDER_BITWISE_AND],
+      'Or': [' | ', Blockly.Verilog.ORDER_BITWISE_OR],
+      'Xor': [' ^ ', Blockly.Verilog.ORDER_BITWISE_XOR],
+      'Xnor': [' ~^ ', Blockly.Verilog.ORDER_BITWISE_XNOR]
+    };
+    var tuple = OPERATORS[block.getFieldValue('OP')];
+    var operator = tuple[0];
+    var order = tuple[1];
+    var argument0 = Blockly.Verilog.valueToCode(block, 'A', order) || '0';
+    var argument1 = Blockly.Verilog.valueToCode(block, 'B', order) || '0';
+    var code = argument0 + operator + argument1;
+    return [code, order];
+  };
+
+  Blockly.Verilog['logic_negate3'] = function(block) {
+    // Negation.
+    var argument0 = Blockly.Verilog.valueToCode(block, 'BOOL',
+        Blockly.Verilog.ORDER_NEG) || '1';
+    var code = '~' + argument0;
+    return [code, Blockly.Verilog.ORDER_NEG];
+  };  

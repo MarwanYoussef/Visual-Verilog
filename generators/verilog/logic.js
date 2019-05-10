@@ -102,7 +102,7 @@ Blockly.Verilog['logic_compare'] = function(block) {
     // Negation.
     var argument0 = Blockly.Verilog.valueToCode(block, 'BOOL',
         Blockly.Verilog.ORDER_NEG) || '1';
-    var code = '~' + argument0;
+    var code = '!' + argument0;
     return [code, Blockly.Verilog.ORDER_NEG];
   };
 
