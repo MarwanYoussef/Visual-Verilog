@@ -589,6 +589,21 @@ Blockly.Blocks['display_block'] = {
   }
 };
 
+Blockly.Blocks['forever_loop'] = {
+  init: function() {
+    this.appendDummyInput("condition")
+        .appendField("Execute forever");
+    this.appendStatementInput("body")
+        .setCheck(null)
+        .appendField("do");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(325);
+ this.setTooltip("Execute the sequence below forever");
+ this.setHelpUrl("");
+  }
+};
+
 Blockly.Blocks['finish_block'] = {
   init: function() {
     this.appendDummyInput()
@@ -651,6 +666,21 @@ Blockly.Blocks['always_simu'] = {
     this.setNextStatement(true, null);
     this.setColour(230);
  this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['variables_set_parallel'] = {
+  init: function() {
+    this.appendValueInput("NAME")
+        .setCheck(null)
+        .appendField("set")
+        .appendField(new Blockly.FieldTextInput("variable"), "var")
+        .appendField("to");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(345);
+ this.setTooltip("set this variable to be equal the input with parallel execution.");
  this.setHelpUrl("");
   }
 };

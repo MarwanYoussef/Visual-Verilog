@@ -29,4 +29,27 @@ goog.provide('Blockly.Verilog.loops');
 goog.require('Blockly.Verilog');
 
 
+Blockly.Verilog['forever_loop'] = function(block) {
+    var statements_body = Blockly.Verilog.statementToCode(block, 'body');
+    // TODO: Assemble Verilog into code variable.
+    var code = 'forever begin\n' + statements_body + 'end\n';
+    return code;
+};
+
+Blockly.Verilog['repeat_loop'] = function(block) {
+    var value_number = Blockly.Verilog.valueToCode(block, 'number', Blockly.Verilog.ORDER_ATOMIC);
+    var statements_code = Blockly.Verilog.statementToCode(block, 'code');
+    // TODO: Assemble Verilog into code variable.
+    var code = 'repeat ('+ value_number + ') begin\n' + statements_code + 'end\n';
+    return code;
+};
+
+Blockly.Verilog['while_loop'] = function(block) {
+    var value_condition = Blockly.Verilog.valueToCode(block, 'condition', Blockly.Verilog.ORDER_ATOMIC);
+    var statements_code = Blockly.Verilog.statementToCode(block, 'code');
+    // TODO: Assemble Verilog into code variable.
+    var code = 'while ( ' + value_condition + ') begin\n' + statements_code + 'end\n';
+    return code;
+  };
+
 

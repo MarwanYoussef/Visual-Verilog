@@ -209,6 +209,47 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
       "controls_flow_tooltip",
       "controls_flow_in_loop_check"
     ]
+  },
+  // Block for repeat loop
+  {
+    "type": "repeat_loop",
+    "message0": "attach number of repetition %1 do %2",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "number",
+        "check": "Number"
+      },
+      {
+        "type": "input_statement",
+        "name": "code"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 330,
+    "tooltip": "Loop to repeat with an input amount of times",
+    "helpUrl": ""
+  },
+  // Block for while loop
+  {
+    "type": "while_loop",
+    "message0": "while %1 do %2",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "condition"
+      },
+      {
+        "type": "input_statement",
+        "name": "code"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 285,
+    "tooltip": "Loop while the condition is evaluated to true",
+    "helpUrl": ""
   }
 ]);  // END JSON EXTRACT (Do not delete this comment.)
 

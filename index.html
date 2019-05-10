@@ -13,6 +13,7 @@
         <script src="js/math.js"></script>
         <script src="js/variables.js"></script>
         <script src="js/custom.js"></script>
+        <script src="js/loops.js"></script>
         <script src="generators/verilog.js"></script>
         <script src="generators/verilog/custom.js"></script>
         <script src="generators/verilog/math.js"></script>
@@ -28,8 +29,8 @@
                 <span>Show Verilog Module</span>
             </button>
             <button class="button" style="vertical-align: middle" 
-                id="button1" onclick="simuLink()">
-                <span>Go to TestBench generator</span>
+                id="button1" onclick="Simulate()">
+                <span>Go to Verilog simulator</span>
             </button>
         </div>
         
@@ -63,6 +64,7 @@
                     <block type="always_blk"></block>
                     <block type="always_simu"></block>
                     <block type="logic_operation_2"></block>
+                    <block type="variables_set_parallel"></block>
                 </category>
                 <category name="Data Flow" colour="200">
                     <block type="assign_block"></block>
@@ -107,8 +109,10 @@
                     <block type="decimal_hexa_return"></block>
                     <block type="decimal_octal_return"></block>
                 </category>
-                <category name="Data Types-NET" colour="230">
-                    
+                <category name="Loops" colour="230">
+                    <block type="forever_loop"></block>
+                    <block type="repeat_loop"></block>
+                    <block type="while_loop"></block>
                 </category>
                 <category name="Data Types-REG" colour="260">
                     
@@ -150,10 +154,13 @@
                 });
 
                 function ShowVerCode(){
-                    window.open('http://www.techep.csi.cuny.edu/~zhangs/v.html', '_blank');
                     Blockly.Verilog.INFINITE_LOOP_TRAP = null;
                     var code = Blockly.Verilog.workspaceToCode(workspace);
                     alert(code)
+                }
+
+                function Simulate(){
+                    window.open('http://www.techep.csi.cuny.edu/~zhangs/v.html', '_blank');
                 }
         </script>                  
     </body>

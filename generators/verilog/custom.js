@@ -430,4 +430,12 @@ Blockly.Verilog['one'] = function(block) {
         Blockly.Verilog.ORDER_NEG) || '1';
     var code = '~' + argument0;
     return [code, Blockly.Verilog.ORDER_NEG];
-  };  
+  };
+
+  Blockly.Verilog['variables_set_parallel'] = function(block) {
+    var text_var = block.getFieldValue('var');
+    var value_name = Blockly.Verilog.valueToCode(block, 'NAME', Blockly.Verilog.ORDER_ATOMIC);
+    // TODO: Assemble Verilog into code variable.
+    var code = text_var + ' <= ' + value_name + ';\n';
+    return code;
+  };
