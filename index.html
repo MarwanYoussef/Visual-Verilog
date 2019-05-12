@@ -32,6 +32,10 @@
                 id="button1" onclick="Simulate()">
                 <span>Go to Verilog simulator</span>
             </button>
+            <button class="button" style="vertical-align: middle"
+            id="button2" onclick="goToDocs()">
+                <span>Go to Visual Verilog Doc</span>
+            </button>
         </div>
         
         <div id="blocklyDiv">
@@ -153,14 +157,18 @@
                         trashcan: true
                 });
 
-                function ShowVerCode(){
+                function ShowVerCode() {
                     Blockly.Verilog.INFINITE_LOOP_TRAP = null;
                     var code = Blockly.Verilog.workspaceToCode(workspace);
                     alert(code)
                 }
 
-                function Simulate(){
+                function Simulate() {
                     window.open('http://www.techep.csi.cuny.edu/~zhangs/v.html', '_blank');
+                }
+
+                function goToDocs() {
+                    window.open('documentation.html' , '_blank');
                 }
         </script>                  
     </body>
