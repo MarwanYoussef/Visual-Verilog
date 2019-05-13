@@ -74,7 +74,10 @@ Blockly.Verilog['one'] = function(block) {
     var text_modname = block.getFieldValue('modName');
     var text_varnames = block.getFieldValue('varNames');
     // TODO: Assemble Verilog into code variable.
-    var code = 'module ' + text_modname + ' ('+ text_varnames+ ')' + ';\n';
+    if(text_varnames === "varNames")
+      var code = 'module ' + text_modname + '();\n';
+    else 
+      var code = 'module ' + text_modname + ' ('+ text_varnames+ ')' + ';\n';
     return code;
   };
   

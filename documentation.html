@@ -1,10 +1,53 @@
-<html>
+<html lang="en-US">
     <head>
         <meta charset="utf-8">
         <title>Visual Verilog Documentation</title>
         <link rel="stylesheet" type="text/css" href="styles_documentation.css">
     </head>
     <body>
-        
+        <div>
+            <div>
+                <h3>Port Declaration</h3>
+                <p>
+                    As any normal programming language works, where code must be written within classes or methods.
+                    Hardware descriptive languages work the same way around in which code is written within <b>Modules</b>
+                </p>
+                <p>
+                    Functionality is described within the module. Each module is declared with two keywords, 
+                    <b>module and endmodule</b>. Now in our Visual Verilog main page; you will find a category on the left
+                    panel "Port declaration", this category contains blocks to represent initializing a new module, declare
+                    input/ output variables and the <b>end</b> module block which is essential and very important to plug in
+                    at the end of your module to achieve correct syntax modules.
+                </p>
+                <h5>
+                    Let's have an example to display any text to the user:
+                </h5>
+                <p>
+                    We will go inside the first and main category of our application. Drag "create new module block" into workspace
+                    Now to start executing stuff at t=0, or in other words as soon as the program is compiled; the "intial" keyword
+                    must be used. Thus, going into the <b>Behavioral</b> category that I'll explain in no time. Append the new module
+                    block with the "Execute at t=0" block from Behavioral category and from the <b>simulation2</b> category, users can
+                    find a print block where he/she could write any text to be displayed. Finally don't forget the <b>End</b> block inside
+                    Module declaration category to be attached at the end.
+                </p>
+                <div id="container">
+                    <div id="leftThing">
+                        <img src="assets/helloWorld.PNG" alt="HelloWorld program in Visual Verilog" style="width:430px;height:250px;">
+                    </div>
+                    <div id="middleThing">
+                        <img src="assets/helloWorldV.PNG" alt="Verilog code in show Verilog Module" style="width:430px;height:250px;">
+                    </div>
+                    <div id="rightThing">
+                        <img src="assets/helloWorldR.PNG" alt="Results after compiling the code via Simulator provided" style="width:430px;height:250px;">
+                    </div>
+                </div>
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+        </div>
     </body>
 </html>

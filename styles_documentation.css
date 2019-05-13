@@ -1,0 +1,17 @@
+#container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+#leftThing {
+    width: 35%;
+}
+
+#middleThing {
+    width: 35%;
+}
+
+#rightThing {
+    width: 35%;
+}
