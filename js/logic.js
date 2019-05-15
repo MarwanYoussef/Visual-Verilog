@@ -150,7 +150,7 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
     "helpUrl": "%{BKY_LOGIC_COMPARE_HELPURL}",
     "extensions": ["logic_compare", "logic_op_tooltip"]
   },
-  // Block for logical operations: 'and', 'or'.
+  // Block for logical operations: 'and', 'or', 'not', 'xor'.
   {
     "type": "logic_operation",
     "message0": "%1 %2 %3",
@@ -196,9 +196,9 @@ Blockly.defineBlocksWithJsonArray([  // BEGIN JSON EXTRACT
         "options": [
           ["%{BKY_LOGIC_OPERATION_AND}", "AND"],
           ["%{BKY_LOGIC_OPERATION_OR}", "OR"],
-          ["NOT", "NOT"],
-          ["XOR", "XOR"],
-          ["XNOR", "XNOR"],
+          ["not", "NOT"],
+          ["xor", "XOR"],
+          ["xnor", "XNOR"]
         ]
       },
       {
