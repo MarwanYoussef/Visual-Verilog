@@ -34,7 +34,7 @@ Verilog is intended to be used for verification through simulation, for timing a
 
 ### Introducing Visual Verilog
 
-*Visual Verilog* is an approach used to soothe the process of learning Verilog also offering automated features instead of the developer to model it himself which requires time and effort. Visual Verilog is a Visual language introduced by *the author: * **Marwan Sami Youssef** built upon Google's Blockly API which is a JavaScript library for modeling Visual Programming Languages. For people with minimal knowledge of Visual Languages; an approach to describe elements graphically rather than specifiying them textually which makes the learning process much easier.
+*Visual Verilog* is an approach used to soothe the process of learning Verilog also offering automated features instead of the developer to model it himself which requires time and effort. Visual Verilog is a Visual language introduced by the author: **Marwan Sami Youssef** built upon Google's Blockly API which is a JavaScript library for modeling Visual Programming Languages. For people with minimal knowledge of Visual Languages; an approach to describe elements graphically rather than specifiying them textually which makes the learning process much easier.
 
 
 ----------------------------------------------------------------------------------------------------------
