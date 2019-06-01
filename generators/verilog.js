@@ -139,12 +139,6 @@ Blockly.Verilog.init = function(workspace){
     defvars.push(Blockly.Verilog.variableDB_.getName(variables[i].getId(),
         Blockly.Variables.NAME_TYPE));
   }
-
-
-// Declare all of the variables.
-  if (defvars.length) {
-    Blockly.Verilog.definitions_['variables'] = defvars.join('\n');
-  }
 }
 
 
