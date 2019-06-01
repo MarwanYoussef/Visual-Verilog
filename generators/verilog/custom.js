@@ -442,3 +442,13 @@ Blockly.Verilog['one'] = function(block) {
     var code = text_var + ' <= ' + value_name + ';\n';
     return code;
   };
+
+  Blockly.Verilog['bit_select'] = function(block) {
+    var value_number = Blockly.Verilog.valueToCode(block, 'number', Blockly.Verilog.ORDER_ATOMIC);
+    var value_name = Blockly.Verilog.valueToCode(block, 'NAME', Blockly.Verilog.ORDER_ATOMIC);
+    // TODO: Assemble Verilog into code variable.
+    var code = value_name + '[' + value_number + ']';
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Verilog.ORDER_NONE];
+  };
+  

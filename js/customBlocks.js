@@ -684,3 +684,18 @@ Blockly.Blocks['variables_set_parallel'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['bit_select'] = {
+  init: function() {
+    this.appendValueInput("number")
+        .setCheck(null)
+        .appendField("Select bit");
+    this.appendValueInput("NAME")
+        .setCheck(null)
+        .appendField("From variable");
+    this.setOutput(true, null);
+    this.setColour(160);
+    this.setTooltip('Enter a number and a variable getter, this will select input bit number');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};
