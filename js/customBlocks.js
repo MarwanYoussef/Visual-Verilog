@@ -699,3 +699,20 @@ Blockly.Blocks['bit_select'] = {
     this.setHelpUrl('http://www.example.com/');
   }
 };
+
+Blockly.Blocks['concat'] = {
+  init: function() {
+    this.appendValueInput("arg1")
+        .setCheck(null)
+        .appendField("");
+    this.appendDummyInput()
+        .appendField("concatinated with");
+    this.appendValueInput("arg2")
+        .setCheck(null)
+        .appendField("");
+    this.setOutput(true, null);
+    this.setColour(210);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.example.com/');
+  }
+};

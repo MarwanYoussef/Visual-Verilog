@@ -451,4 +451,13 @@ Blockly.Verilog['one'] = function(block) {
     // TODO: Change ORDER_NONE to the correct strength.
     return [code, Blockly.Verilog.ORDER_NONE];
   };
+
+  Blockly.Verilog['concat'] = function(block) {
+    var value_arg1 = Blockly.Verilog.valueToCode(block, 'arg1', Blockly.Verilog.ORDER_ATOMIC);
+    var value_arg2 = Blockly.Verilog.valueToCode(block, 'arg2', Blockly.Verilog.ORDER_ATOMIC);
+    // TODO: Assemble Verilog into code variable.
+    var code = '{' + value_arg1 + ' , ' + value_arg2 +'}';
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Verilog.ORDER_ATOMIC];
+  };
   
